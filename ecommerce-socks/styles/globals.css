@@ -223,7 +223,7 @@ text-align: end;
 }
 .banner-desc{
   display: flex ;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .banner-desc button{
   border-radius: 15px;
@@ -352,7 +352,7 @@ padding: 20px 10px;
 .item-desc .flex{
   display: flex;
   justify-content: space-between;
-  width: 350px;
+  width: 300px;
    color: #324d67;
 
 }
