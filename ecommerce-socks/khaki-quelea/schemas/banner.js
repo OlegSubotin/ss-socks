@@ -56,5 +56,14 @@ export default {
       title: 'SaleTime',
       type: 'string',
     },
+    {
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: "name",
+        maxLEngth: 90,
+      }
+    },
   ],
 };

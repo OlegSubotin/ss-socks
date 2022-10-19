@@ -1,8 +1,28 @@
 import React from 'react';
-import Link from "next/link";
 import { urlFor } from "../lib/client";
 
-const FooterBanner = ({ footerBanner: { discount, largeText1, largeText2, saleTime, desc, smallText, midText, product, buttonText, image } }) => {
+const FooterBanner = ({ footerBanner:
+  {
+    discount,
+    largeText1,
+    largeText2,
+    saleTime,
+    desc,
+    smallText,
+    midText,
+    product,
+    buttonText,
+    image
+  }
+}) => {
+  
+  const onBuyBtnClick = () => {
+    window.scrollTo({
+      top: 550,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <div className='footer-banner-container'>
       <div className='banner-desc'>
@@ -16,11 +36,9 @@ const FooterBanner = ({ footerBanner: { discount, largeText1, largeText2, saleTi
           <p>{smallText}</p>
           <h3>{midText}</h3>
           <p>{desc}</p>
-          <Link href={`/product/${product}`}>
-            <button type="button">
-              {buttonText}
-            </button>
-          </Link>
+          <button type="button" onClick={() => onBuyBtnClick()}>
+            {buttonText}
+          </button>
         </div>
         <img
           src={urlFor(image)}
@@ -29,6 +47,6 @@ const FooterBanner = ({ footerBanner: { discount, largeText1, largeText2, saleTi
       </div>
     </div>
   )
-}
+};
 
 export default FooterBanner
