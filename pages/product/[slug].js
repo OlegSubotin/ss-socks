@@ -44,11 +44,11 @@ const ProductDetails = ({ product, products }) => {
           </div>
             
           
-          <h4>Details:</h4>
+          <h4>Деталі:</h4>
           <p>{details}</p>
           <p className='price'>{price} гр.</p>
           <div className="quantity">
-            <h3>Quantity:</h3>
+            <h3>Кількість:</h3>
             <p className='quantity-desc'>
               <span className='minus' onClick={decreaseQty}><AiOutlineMinus /></span>
               <span className='num'>{qty}</span>
