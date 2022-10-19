@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import { client, urlFor } from "../../lib/client";
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { Product } from '../../components';
@@ -7,6 +8,7 @@ import { useStateContext } from "../../context/StateContext";
 const ProductDetails = ({ product, products }) => {
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
+  const router = useRouter();
   const { decreaseQty, increaseQty, qty, onAdd } = useStateContext();
 
   return (
@@ -49,7 +51,7 @@ const ProductDetails = ({ product, products }) => {
             <h3>Quantity:</h3>
             <p className='quantity-desc'>
               <span className='minus' onClick={decreaseQty}><AiOutlineMinus /></span>
-              <span className='num' onClick="">{qty}</span>
+              <span className='num'>{qty}</span>
               <span className='plus' onClick={increaseQty}><AiOutlinePlus /></span>
             </p>
           </div>
@@ -57,7 +59,7 @@ const ProductDetails = ({ product, products }) => {
             <button type="button" className='add-to-cart' onClick={()=>onAdd(product, qty)}>
               Додати
             </button>
-            <button type="button" className='buy-now' onClick="">
+            <button type="button" className='buy-now' onClick={()=>router.push("/success")}>
               Купити зараз
             </button>
           </div>

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React, { useRef } from 'react';
+import { useRouter } from "next/router";
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping } from 'react-icons/ai';
 import { TiDeleteOutline } from "react-icons/ti";
 import { useStateContext } from "../context/StateContext";
@@ -9,6 +10,13 @@ import { urlFor } from "../lib/client";
 const Cart = () => {
   const cartRef = useRef();
   const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemove } = useStateContext();
+
+  const router = useRouter();
+
+  const onBuyBtnClick = () =>{
+    setShowCart(false);
+    router.push("/success");
+  }
 
   return (
     <div className='cart-wrapper' ref={cartRef}>
@@ -59,7 +67,7 @@ const Cart = () => {
                         <span className='minus' onClick={() => toggleCartItemQuantity(item._id, 'dec')}>
                           <AiOutlineMinus />
                         </span>
-                        <span className='num' onClick="">{item.quantity}</span>
+                        <span className='num' >{item.quantity}</span>
                         <span className='plus' onClick={() => toggleCartItemQuantity(item._id, 'inc')}>
                           <AiOutlinePlus />
                         </span>
@@ -68,7 +76,7 @@ const Cart = () => {
                     <button
                       type='button'
                       className='remove-item'
-                      onClick={()=>onRemove(item)}
+                      onClick={() => onRemove(item)}
                     >
                       <TiDeleteOutline />
                     </button>
@@ -89,7 +97,7 @@ const Cart = () => {
                 <button
                   type='button'
                   className='btn'
-                  onClick=""
+                  onClick={() => onBuyBtnClick()}
                 >
                   Сплатити
                 </button>
